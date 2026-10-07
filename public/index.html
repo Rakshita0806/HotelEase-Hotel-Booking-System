@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aurum Grand — Luxury Hotel & Suites</title>
+<meta name="description" content="Aurum Grand — a five-star luxury hotel booking experience. Reserve suites, villas and penthouses." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>" />
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark">A</span>
+      <span class="brand__text">
+        <strong>AURUM</strong>
+        <em>GRAND HOTEL</em>
+      </span>
+    </a>
+
+    <nav class="nav__links">
+      <a href="#rooms">Suites &amp; Rooms</a>
+      <a href="#stats">Overview</a>
+      <a href="#manage">Reservations</a>
+    </nav>
+
+    <div class="nav__actions">
+      <a class="btn btn--ghost" href="#manage">Manage</a>
+      <button class="btn btn--gold" id="navBookBtn">Book Now</button>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+
+  <div class="beams" aria-hidden="true">
+    <span class="beam"></span>
+    <span class="beam"></span>
+    <span class="beam"></span>
+    <span class="beam"></span>
+    <span class="beam"></span>
+  </div>
+  <div class="dust" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <p class="eyebrow"><span class="eyebrow__line"></span> Five-Star Luxury Since 1928</p>
+    <h1 class="hero__title">
+      Where Every Night<br />
+      <em>Becomes a Memory</em>
+    </h1>
+    <p class="hero__sub">
+      Handpicked suites, panoramic penthouses and private villas — curated for
+      travellers who accept nothing less than extraordinary.
+    </p>
+
+    <div class="hero__cta">
+      <a class="btn btn--gold btn--lg" href="#rooms">Explore Suites</a>
+      <button class="btn btn--outline btn--lg" id="heroBookBtn">Check Availability</button>
+    </div>
+
+    <form class="searchbar" id="searchForm">
+      <div class="searchbar__field">
+        <label>Check In</label>
+        <input type="date" id="qCheckIn" />
+      </div>
+      <div class="searchbar__field">
+        <label>Check Out</label>
+        <input type="date" id="qCheckOut" />
+      </div>
+      <div class="searchbar__field">
+        <label>Guests</label>
+        <select id="qGuests">
+          <option value="1">1 Guest</option>
+          <option value="2" selected>2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+          <option value="5">5 Guests</option>
+          <option value="6">6 Guests</option>
+        </select>
+      </div>
+      <button class="btn btn--gold searchbar__btn" type="submit">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        Search
+      </button>
+    </form>
+  </div>
+
+  <div class="hero__scroll"><span></span>Scroll</div>
+</section>
+
+<!-- ══════════════ STATS ══════════════ -->
+<section class="stats" id="stats">
+  <div class="stats__grid">
+    <div class="stat">
+      <div class="stat__icon">🏨</div>
+      <div class="stat__value" data-count id="statRooms">0</div>
+      <div class="stat__label">Rooms &amp; Suites</div>
+    </div>
+    <div class="stat">
+      <div class="stat__icon">📅</div>
+      <div class="stat__value" data-count id="statBookings">0</div>
+      <div class="stat__label">Reservations</div>
+    </div>
+    <div class="stat">
+      <div class="stat__icon">✦</div>
+      <div class="stat__value" data-count id="statOccupancy">0</div>
+      <div class="stat__label">Occupancy Today %</div>
+    </div>
+    <div class="stat">
+      <div class="stat__icon">💰</div>
+      <div class="stat__value" id="statRevenue">$0</div>
+      <div class="stat__label">Total Revenue</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ROOMS ══════════════ -->
+<section class="rooms" id="rooms">
+  <div class="section-head">
+    <p class="eyebrow eyebrow--dark"><span class="eyebrow__line"></span> Our Collection</p>
+    <h2 class="section-title">Rooms &amp; <em>Signature Suites</em></h2>
+    <p class="section-sub">
+      Each residence is designed with natural stone, warm oak and bespoke furnishings —
+      a private sanctuary above the city.
+    </p>
+  </div>
+
+  <div class="filters">
+    <div class="filters__group">
+      <input type="search" id="fSearch" class="input" placeholder="Search suites…" />
+    </div>
+    <div class="filters__group">
+      <select id="fType" class="input">
+        <option value="">All Categories</option>
+      </select>
+    </div>
+    <div class="filters__group">
+      <select id="fCapacity" class="input">
+        <option value="">Any Guests</option>
+        <option value="1">1+ Guests</option>
+        <option value="2">2+ Guests</option>
+        <option value="3">3+ Guests</option>
+        <option value="4">4+ Guests</option>
+        <option value="6">6+ Guests</option>
+      </select>
+    </div>
+    <div class="filters__group">
+      <select id="fSort" class="input">
+        <option value="">Sort: Featured</option>
+        <option value="price-asc">Price: Low → High</option>
+        <option value="price-desc">Price: High → Low</option>
+        <option value="name">Name A → Z</option>
+      </select>
+    </div>
+    <button class="btn btn--ghost filters__reset" id="fReset">Reset</button>
+  </div>
+
+  <div class="room-grid" id="roomGrid"></div>
+</section>
+
+<!-- ══════════════ MANAGEMENT ══════════════ -->
+<section class="manage" id="manage">
+  <div class="section-head">
+    <p class="eyebrow eyebrow--dark"><span class="eyebrow__line"></span> Front Desk Console</p>
+    <h2 class="section-title">Reservation <em>Management</em></h2>
+    <p class="section-sub">Create, update and cancel bookings. Maintain the room inventory in real time.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab is-active" data-tab="bookings">Bookings <span class="tab__count" id="tabBookingCount">0</span></button>
+    <button class="tab" data-tab="rooms">Room Inventory <span class="tab__count" id="tabRoomCount">0</span></button>
+  </div>
+
+  <!-- BOOKINGS PANEL -->
+  <div class="panel is-active" id="panel-bookings">
+    <div class="panel__bar">
+      <input type="search" id="bSearch" class="input" placeholder="Search guest, email or room…" />
+      <select id="bStatus" class="input">
+        <option value="">All Statuses</option>
+        <option value="confirmed">Confirmed</option>
+        <option value="pending">Pending</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+      <button class="btn btn--gold" id="newBookingBtn">+ New Booking</button>
+    </div>
+    <div class="table-wrap">
+      <table class="table" id="bookingTable">
+        <thead>
+          <tr>
+            <th>Ref</th><th>Guest</th><th>Room</th><th>Dates</th>
+            <th>Nights</th><th>Total</th><th>Status</th><th class="ta-r">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="bookingBody"></tbody>
+      </table>
+      <div class="empty" id="bookingEmpty" hidden>
+        <div class="empty__icon">🗓️</div>
+        <h4>No reservations found</h4>
+        <p>Try adjusting your filters or create a new booking.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROOMS PANEL -->
+  <div class="panel" id="panel-rooms">
+    <div class="panel__bar">
+      <input type="search" id="rSearch" class="input" placeholder="Search room name…" />
+      <button class="btn btn--gold" id="newRoomBtn">+ Add Room</button>
+    </div>
+    <div class="table-wrap">
+      <table class="table" id="roomTable">
+        <thead>
+          <tr>
+            <th>Room</th><th>Category</th><th>Capacity</th>
+            <th>Units</th><th>Rate / Night</th><th>Status</th><th class="ta-r">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="roomBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="brand brand--footer">
+        <span class="brand__mark">A</span>
+        <span class="brand__text"><strong>AURUM</strong><em>GRAND HOTEL</em></span>
+      </div>
+      <p class="footer__blurb">
+        12 Marina Boulevard, Azure Bay<br />
+        Reservations · +1 (800) 555-0199
+      </p>
+    </div>
+    <div>
+      <h5>Stay</h5>
+      <a href="#rooms">Suites</a><a href="#rooms">Villas</a><a href="#rooms">Penthouses</a>
+    </div>
+    <div>
+      <h5>Experience</h5>
+      <a href="#top">Spa &amp; Wellness</a><a href="#top">Fine Dining</a><a href="#top">Private Events</a>
+    </div>
+    <div>
+      <h5>Console</h5>
+      <a href="#manage">Reservations</a><a href="#manage">Inventory</a><a href="/api/stats" target="_blank">API Status</a>
+    </div>
+  </div>
+  <div class="footer__base">
+    <span>© <span id="year"></span> Aurum Grand Hotel. All rights reserved.</span>
+    <span>Built with Node · Express · SQLite · Vanilla JS</span>
+  </div>
+</footer>
+
+<!-- ══════════════ BOOKING MODAL ══════════════ -->
+<div class="modal" id="bookingModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog modal__dialog--wide" role="dialog" aria-modal="true">
+    <button class="modal__close" data-close aria-label="Close">✕</button>
+
+    <div class="booking-layout">
+      <aside class="booking-aside" id="bookingAside">
+        <!-- filled by JS -->
+      </aside>
+
+      <div class="booking-main">
+        <h3 class="modal__title">Complete Your <em>Reservation</em></h3>
+        <p class="modal__hint">Secure your stay in three simple steps.</p>
+
+        <form id="bookingForm" class="form">
+          <input type="hidden" id="bkRoomId" />
+
+          <div class="form__row">
+            <div class="field">
+              <label for="bkCheckIn">Check In</label>
+              <input type="date" id="bkCheckIn" required />
+            </div>
+            <div class="field">
+              <label for="bkCheckOut">Check Out</label>
+              <input type="date" id="bkCheckOut" required />
+            </div>
+            <div class="field">
+              <label for="bkGuests">Guests</label>
+              <input type="number" id="bkGuests" min="1" max="10" value="2" required />
+            </div>
+          </div>
+
+          <div class="avail" id="availBox">
+            <span class="avail__dot"></span>
+            <span class="avail__text">Select your dates to check availability</span>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="bkName">Full Name</label>
+              <input type="text" id="bkName" placeholder="Jane Doe" required />
+            </div>
+            <div class="field">
+              <label for="bkEmail">Email</label>
+              <input type="email" id="bkEmail" placeholder="jane@email.com" required />
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="bkPhone">Phone</label>
+              <input type="tel" id="bkPhone" placeholder="+1 555 000 1234" />
+            </div>
+            <div class="field">
+              <label for="bkRequests">Special Requests</label>
+              <input type="text" id="bkRequests" placeholder="High floor, late check-in…" />
+            </div>
+          </div>
+
+          <div class="price-summary" id="priceSummary">
+            <div class="price-summary__row"><span>Rate per night</span><b id="psRate">$0</b></div>
+            <div class="price-summary__row"><span>Nights</span><b id="psNights">0</b></div>
+            <div class="price-summary__row"><span>Service &amp; taxes (12%)</span><b id="psTax">$0</b></div>
+            <div class="price-summary__row price-summary__total"><span>Total</span><b id="psTotal">$0</b></div>
+          </div>
+
+          <div class="form__actions">
+            <button type="button" class="btn btn--ghost" data-close>Cancel</button>
+            <button type="submit" class="btn btn--gold btn--lg" id="bkSubmit">Confirm Reservation</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ROOM MODAL ══════════════ -->
+<div class="modal" id="roomModal" aria-hidden="true">
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true">
+    <button class="modal__close" data-close aria-label="Close">✕</button>
+    <h3 class="modal__title" id="roomModalTitle">Add <em>Room</em></h3>
+    <p class="modal__hint">Define the room details and nightly rate.</p>
+
+    <form id="roomForm" class="form">
+      <input type="hidden" id="rmId" />
+
+      <div class="form__row">
+        <div class="field">
+          <label for="rmName">Room Name</label>
+          <input type="text" id="rmName" placeholder="Deluxe Garden View" required />
+        </div>
+        <div class="field">
+          <label for="rmType">Category</label>
+          <input type="text" id="rmType" list="typeList" placeholder="Deluxe" required />
+          <datalist id="typeList">
+            <option value="Standard"></option>
+            <option value="Deluxe"></option>
+            <option value="Suite"></option>
+            <option value="Family"></option>
+            <option value="Penthouse"></option>
+            <option value="Villa"></option>
+          </datalist>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="rmDescription">Description</label>
+        <textarea id="rmDescription" rows="2" placeholder="A calm retreat overlooking the gardens…"></textarea>
+      </div>
+
+      <div class="form__row form__row--3">
+        <div class="field">
+         <label for="rmPrice">Rate / Night (₹)</label>
+          <input type="number" id="rmPrice" min="1" step="1" placeholder="189" required />
+        </div>
+        <div class="field">
+          <label for="rmCapacity">Max Guests</label>
+          <input type="number" id="rmCapacity" min="1" max="12" value="2" required />
+        </div>
+        <div class="field">
+          <label for="rmBeds">Beds</label>
+          <input type="number" id="rmBeds" min="1" max="10" value="1" required />
+        </div>
+      </div>
+
+      <div class="form__row form__row--3">
+        <div class="field">
+          <label for="rmSize">Size (m²)</label>
+          <input type="number" id="rmSize" min="0" value="30" />
+        </div>
+        <div class="field">
+          <label for="rmUnits">Units Available</label>
+          <input type="number" id="rmUnits" min="1" max="99" value="1" required />
+        </div>
+        <div class="field">
+          <label for="rmStatus">Status</label>
+          <select id="rmStatus">
+            <option value="available">Available</option>
+            <option value="maintenance">Maintenance</option>
+            <option value="hidden">Hidden</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="rmImage">Image URL</label>
+        <input type="url" id="rmImage" placeholder="https://images.unsplash.com/…" />
+      </div>
+
+      <div class="field">
+        <label for="rmAmenities">Amenities <small>(comma separated)</small></label>
+        <input type="text" id="rmAmenities" placeholder="Wi-Fi, Mini Bar, Ocean View, Balcony" />
+      </div>
+
+      <div class="form__actions">
+        <button type="button" class="btn btn--ghost" data-close>Cancel</button>
+        <button type="submit" class="btn btn--gold btn--lg" id="rmSubmit">Save Room</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════ TOASTS ══════════════ -->
+<div class="toasts" id="toasts"></div>
+<script src="/app.js"></script>
+</body>
+</html>
